@@ -209,7 +209,7 @@ function deleteShortUrl(delKeyPhrase) {
     modal.show();
 
   }).catch(function (err) {
-    alert("Unknow error. Please retry!");
+    alert("未知错误,请重试!");
     console.log(err);
   })
 }
@@ -278,7 +278,7 @@ function query1KV() {
     }
 
   }).catch(function (err) {
-    alert("Unknow error. Please retry!");
+    alert("未知错误,请重试!");
     console.log(err);
   })
 }
@@ -314,7 +314,7 @@ function loadKV() {
       modal.show();
     }
   }).catch(function (err) {
-    alert("Unknow error. Please retry!");
+    alert("未知错误,请重试!");
     console.log(err);
   })
 }
