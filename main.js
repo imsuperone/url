@@ -2,16 +2,11 @@ let res
 
 let apiSrv = window.location.pathname
 let password_value = document.querySelector("#passwordText").value
-// let apiSrv = "https://journal.crazypeace.workers.dev"
-// let password_value = "journaljournal"
-
-// 这是默认行为, 在不同的index.html中可以设置为不同的行为
-// This is default, you can define it to different funciton in different theme index.html
 let buildValueItemFunc = buildValueTxt
 
 function shorturl() {
   if (document.querySelector("#longURL").value == "") {
-    alert("Url cannot be empty!")
+    alert("Url不能为空!")
     return
   }
   
@@ -20,7 +15,7 @@ function shorturl() {
   document.getElementById('keyPhrase').value = document.getElementById('keyPhrase').value.replace(/\s/g, "-");
 
   document.getElementById("addBtn").disabled = true;
-  document.getElementById("addBtn").innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Please wait...';
+  document.getElementById("addBtn").innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>请稍等...';
   fetch(apiSrv, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -30,7 +25,7 @@ function shorturl() {
   }).then(function (myJson) {
     res = myJson;
     document.getElementById("addBtn").disabled = false;
-    document.getElementById("addBtn").innerHTML = 'Shorten it';
+    document.getElementById("addBtn").innerHTML = '缩短';
 
     // 成功生成短链 Succeed
     if (res.status == "200") {
@@ -51,10 +46,10 @@ function shorturl() {
     modal.show();
 
   }).catch(function (err) {
-    alert("Unknow error. Please retry!");
+    alert("未知错误,请重试!");
     console.log(err);
     document.getElementById("addBtn").disabled = false;
-    document.getElementById("addBtn").innerHTML = 'Shorten it';
+    document.getElementById("addBtn").innerHTML = '缩短';
   })
 }
 
@@ -204,7 +199,7 @@ function deleteShortUrl(delKeyPhrase) {
       // 加载localStorage
       loadUrlList()
 
-      document.getElementById("result").innerHTML = "Delete Successful"
+      document.getElementById("result").innerHTML = "删除成功"
     } else {
       document.getElementById("result").innerHTML = res.error;
     }
